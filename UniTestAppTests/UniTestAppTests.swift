@@ -9,28 +9,41 @@ import XCTest
 @testable import UniTestApp
 
 final class UniTestAppTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    var calculator: Calculator!
+    
+    override func setUp() {
+    calculator = Calculator()
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    override func tearDown() {
+    calculator = nil
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+ 
+    func testAddDemo(){
+        // GIVEN - ARRANGE
+        var result: Int = 0
+        
+        // WHEN - ACT
+        result = calculator.addTen(num: 20)
+        
+        //THEN - ASSERT
+        XCTAssert(result == 40 , "This should be only a number!")
+        XCTAssertTrue(result == 40)
+        XCTAssertEqual(result, 40, "The result should be 40!")
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testMultip(){
+        // GIVEN - ARRANGE
+        var expected = 0
+        
+        // WHEN - ACT
+        expected = calculator.beSquare(8)
+        
+        //THEN - ASSERT
+        
+        XCTAssertEqual(expected,  64)
     }
 
 }
